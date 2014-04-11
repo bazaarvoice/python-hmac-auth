@@ -1,13 +1,13 @@
 Welcome
 =======
 
-This library enables HMAC authentication for Python clients that interface with API's implementing
-authentication using the [jersey-hmac-auth](https://github.com/bazaarvoice/jersey-hmac-auth) library.
+This is a Python SDK for the [jersey-hmac-auth](https://github.com/bazaarvoice/jersey-hmac-auth) library.
+It enables you to encode outgoing API requests such that they can be authenticated by services that implement 
+HMAC authentication using the jersey-hmac-auth library.
 
-To use it, just code your API requests using the [Requests](http://docs.python-requests.org) library
-and specify an ```HmacAuth``` instance as a 
-[custom authenticator](http://docs.python-requests.org/en/latest/user/advanced/#custom-authentication) 
-on the request (as demonstrated below).
+This SDK is essentially just a [custom authenticator](http://docs.python-requests.org/en/latest/user/advanced/#custom-authentication)
+for the [Requests](http://docs.python-requests.org) library. To use it, just code your API requests using the
+Requests library and add an `HmacAuth` authenticator to your calls (as demonstrated below).
 
 
 Getting Started
@@ -36,12 +36,3 @@ Pull requests are always welcome and appreciated.
 
 To submit new requests/issues or to see existing requests/issues, please 
 visit the [Issues](https://github.com/bazaarvoice/python-hmac-auth/issues) page.
-
-
-TODO 
-====
-
-Make issues for each of these:
-
-- Add tests
-- Add notes on building and releasing new versions of the library
