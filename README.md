@@ -16,7 +16,7 @@ Getting Started
 Install it locally. Just replace the version to the latest released version. For example:
 
 ```
-pip install git+ssh://git@github.com/bazaarvoice/python-hmac-auth.git@0.2
+pip install git+ssh://git@github.com/bazaarvoice/python-hmac-auth.git@v0.3
 ```
 
 Then, in your code, construct requests as follows:
