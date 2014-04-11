@@ -11,7 +11,6 @@ setup(
     description='HMAC authentication for Python clients',
     long_description=open('README.md').read(),
     install_requires=[
-        "requests == 2.2.1",
-        "pytest == 2.5.2"
+        "requests == 2.2.1"
     ],
 )
