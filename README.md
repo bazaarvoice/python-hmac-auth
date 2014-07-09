@@ -1,12 +1,11 @@
 # python-hmac-auth
 
-Python-based HMAC authentication for client libraries that use 
-[jersey-hmac-auth](https://github.com/bazaarvoice/jersey-hmac-auth) to implement API authentication.
+HMAC authentication for Python client libraries.
 
-This library makes it easy to add support for HMAC authentication in Python clients that use the Python 
-[Requests](http://docs.python-requests.org) library. It modifies all outgoing API requests to include the appropriate 
-parameters/headers so that they can be authenticated by the server. It does this by providing a
-[custom authenticator](http://docs.python-requests.org/en/latest/user/advanced/#custom-authentication) that modifies  requests that you make using the Requests library.
+This library makes it easy to add support for HMAC authentication in Python clients that (1) interface with an API that uses
+[jersey-hmac-auth](https://github.com/bazaarvoice/jersey-hmac-auth) to implement authentication and (2) use the Python [Requests](http://docs.python-requests.org) library to make their API calls. 
+
+It provides a custom authentictor that easily integrates with the Requests library and modifies all outgoing API requests by calculating a request signature and adding all the appropriate parameters/headers to the request.
 
 
 ## Getting Started
