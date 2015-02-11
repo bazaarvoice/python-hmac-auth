@@ -28,6 +28,18 @@ from python_hmac_auth import HmacAuth
 response = requests.get('http://example.com/api', auth=HmacAuth('your_api_key', 'your_secret_key'))
 ```
 
+If you need to you can adjust the **names** of the query parameter and headers used by HMAC by passing 
+values for:
+* api_key_query_param
+* signature_http_header
+* timestamp_http_header
+* version_http_header
+to the constructor as named parameters.
+
+See the User Guide to find the default names for these headers.
+
+Changes in the client must also be made at the server or authentication will not work.
+
 ## User Guide
 
 See the [User Guide](https://github.com/bazaarvoice/jersey-hmac-auth/wiki) for jersey-hmac-auth for more details 
