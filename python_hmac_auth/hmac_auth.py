@@ -16,9 +16,17 @@ class HmacAuth(AuthBase):
     SIGNATURE_DELIM = '\n'
     VERSION_1 = '1'
 
-    def __init__(self, api_key, secret_key):
+    def __init__(self, api_key, secret_key,
+                 api_key_query_param = API_KEY_QUERY_PARAM,
+                 signature_http_header = SIGNATURE_HTTP_HEADER,
+                 timestamp_http_header = TIMESTAMP_HTTP_HEADER,
+                 version_http_header = VERSION_HTTP_HEADER):
         self.api_key = api_key
         self.secret_key = secret_key
+        self.api_key_query_param = api_key_query_param
+        self.signature_http_header = signature_http_header
+        self.timestamp_http_header = timestamp_http_header
+        self.version_http_header = version_http_header
 
     def __call__(self, request):
         self._encode(request)
@@ -40,23 +48,23 @@ class HmacAuth(AuthBase):
         url = request.url
         scheme, netloc, path, query_string, fragment = urlsplit(url)
         query_params = parse_qs(query_string)
-        query_params[HmacAuth.API_KEY_QUERY_PARAM] = self.api_key
+        query_params[self.api_key_query_param] = self.api_key
         new_query_string = urlencode(query_params, doseq=True)
         new_url = urlunsplit((scheme, netloc, path, new_query_string, fragment))
         request.url = new_url
 
     def _add_timestamp(self, request, timestamp):
-        request.headers[HmacAuth.TIMESTAMP_HTTP_HEADER] = timestamp
+        request.headers[self.timestamp_http_header] = timestamp
 
     def _add_version(self, request, version):
-        request.headers[HmacAuth.VERSION_HTTP_HEADER] = version
+        request.headers[self.version_http_header] = version
 
     def _add_signature(self, request, timestamp):
         method = request.method
         path = request.path_url
         content = request.body
         signature = self._sign(method, timestamp, path, content)
-        request.headers[HmacAuth.SIGNATURE_HTTP_HEADER] = signature
+        request.headers[self.signature_http_header] = signature
 
     def _sign(self, method, timestamp, path, content):
         # Build the message to sign
