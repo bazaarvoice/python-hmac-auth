@@ -5,13 +5,13 @@ def read(filename):
 
 setup(
     name='python-hmac-auth',
-    version='0.4',
+    version='0.5',
     description='Python client for jersey-hmac-auth (https://github.com/bazaarvoice/jersey-hmac-auth)',
     long_description=read('README.md'),
     url='https://github.com/bazaarvoice/python-hmac-auth',
     license=read('LICENSE'),
     author='Bazaarvoice',
-    author_email='benton.porter@bazaarvoice.com',
+    author_email='judd.rogers@bazaarvoice.com',
     packages=['python_hmac_auth'],
     include_package_data=True,
     classifiers=[
