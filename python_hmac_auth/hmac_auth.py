@@ -4,9 +4,7 @@ import dateutil.tz
 import hmac
 from hashlib import sha256
 from requests.auth import AuthBase
-from urlparse import parse_qs, urlsplit, urlunsplit
-from urllib import urlencode
-
+from urllib.parse import parse_qs, urlsplit, urlunsplit, urlencode
 
 class HmacAuth(AuthBase):
     API_KEY_QUERY_PARAM = 'apiKey'
