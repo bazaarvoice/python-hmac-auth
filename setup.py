@@ -5,7 +5,7 @@ def read(filename):
 
 setup(
     name='python-hmac-auth',
-    version='0.4',
+    version='1.0',
     description='Python client for jersey-hmac-auth (https://github.com/bazaarvoice/jersey-hmac-auth)',
     long_description=read('README.md'),
     url='https://github.com/bazaarvoice/python-hmac-auth',
@@ -20,14 +20,10 @@ setup(
         'Natural Language :: English',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Topic :: Software Development :: Libraries :: Python Modules',
         ],
-    install_requires=['requests']
+    install_requires=['requests', 'python-dateutil']
 )
