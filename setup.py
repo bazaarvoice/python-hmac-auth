@@ -1,11 +1,14 @@
 from setuptools import setup
 
+
 def read(filename):
-    return open(filename).read()
+    with open(filename, 'r') as f:
+        return f.read()
+
 
 setup(
     name='python-hmac-auth',
-    version='0.4',
+    version='0.5',
     description='Python client for jersey-hmac-auth (https://github.com/bazaarvoice/jersey-hmac-auth)',
     long_description=read('README.md'),
     url='https://github.com/bazaarvoice/python-hmac-auth',
@@ -28,6 +31,6 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Topic :: Software Development :: Libraries :: Python Modules',
-        ],
+    ],
     install_requires=['requests']
 )
