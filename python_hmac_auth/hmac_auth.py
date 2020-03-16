@@ -4,8 +4,25 @@ import dateutil.tz
 import hmac
 from hashlib import sha256
 from requests.auth import AuthBase
-from urlparse import parse_qs, urlsplit, urlunsplit
-from urllib import urlencode
+
+try:
+    from urlparse import parse_qs, urlsplit, urlunsplit
+    from urllib import urlencode
+except:
+    from urllib.parse import parse_qs, urlsplit, urlunsplit, urlencode
+
+
+def _get_current_timestamp():
+    # Return current UTC time in ISO8601 format
+    return datetime.datetime.now(dateutil.tz.tzutc()).isoformat()
+
+
+def _add_timestamp(request, timestamp):
+    request.headers[HmacAuth.TIMESTAMP_HTTP_HEADER] = timestamp
+
+
+def _add_version(request, version):
+    request.headers[HmacAuth.VERSION_HTTP_HEADER] = version
 
 
 class HmacAuth(AuthBase):
