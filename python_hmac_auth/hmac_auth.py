@@ -17,14 +17,6 @@ def _get_current_timestamp():
     return datetime.datetime.now(dateutil.tz.tzutc()).isoformat()
 
 
-def _add_timestamp(request, timestamp):
-    request.headers[HmacAuth.TIMESTAMP_HTTP_HEADER] = timestamp
-
-
-def _add_version(request, version):
-    request.headers[HmacAuth.VERSION_HTTP_HEADER] = version
-
-
 class HmacAuth(AuthBase):
     API_KEY_QUERY_PARAM = 'apiKey'
     SIGNATURE_HTTP_HEADER = 'X-Auth-Signature'
@@ -44,9 +36,9 @@ class HmacAuth(AuthBase):
     def _encode(self, request):
         timestamp = _get_current_timestamp()
         self._add_api_key(request)
-        _add_timestamp(request, timestamp)
         self._add_signature(request, timestamp)
-        _add_version(request, HmacAuth.VERSION_1)
+        request.headers[HmacAuth.TIMESTAMP_HTTP_HEADER] = timestamp
+        request.headers[HmacAuth.VERSION_HTTP_HEADER] = HmacAuth.VERSION_1
 
     def _add_api_key(self, request):
         # Add the API key as a query parameter
