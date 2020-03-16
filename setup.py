@@ -32,5 +32,5 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    install_requires=['requests']
+    install_requires=['requests', 'python-dateutil']
 )
