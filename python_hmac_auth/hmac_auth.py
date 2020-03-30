@@ -1,14 +1,14 @@
 import base64
 import datetime
-import dateutil.tz
 import hmac
 from hashlib import sha256
+import dateutil.tz
 from requests.auth import AuthBase
 
 try:
     from urlparse import parse_qs, urlsplit, urlunsplit
     from urllib import urlencode
-except:
+except ImportError:
     from urllib.parse import parse_qs, urlsplit, urlunsplit, urlencode
 
 
